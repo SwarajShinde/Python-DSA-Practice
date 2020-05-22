@@ -22,6 +22,7 @@ for _ in range(t):
     while m!=0:
         a=heappop(heap)
         a=a+1
+        #keep on decreasing the value by 1 , until the value ==0 . THis is because we want the max number of Distinct elements.
         if a!=0:
             heappush(heap,a)
         
