@@ -1,0 +1,57 @@
+
+'''
+k => number of rows
+n => number of columns
+
+Create a min heap of size k and insert first elements of all k lists into the heap.
+Maintain two variables min and max to store minimum and maximum values present in the heap at any point. 
+Get the minimum element from the heap (minimum is always at root) and compute the range.
+Replace heap root with next element of the list from which the min element is extracted. After replacing the root, heapify the tree. Update max if next element is greater. If the list doesn’t have any more elements, break the loop.
+'''
+CODE STARTS: => 
+
+import heapq
+
+def smallestRange(numbers):
+    indices = [0 for _ in range(len(numbers))]  # setting initial indices to zero
+    min_heap = [(numbers[0], bid) for (bid, numbers) in enumerate(numbers)]
+    heapq.heapify(min_heap)
+
+    upper = max([num[0] for num in numbers])
+    lower = min_heap[0][0]
+    
+    
+    temp = upper       # saving the higher value
+    
+    while True:
+        
+        min_val, bid = heapq.heappop(min_heap)
+        indices[bid] += 1
+        ind = indices[bid] 
+        
+        if ind == len(numbers[bid]):
+            break
+        
+        heapq.heappush(min_heap, (numbers[bid][ind], bid))
+        temp = max(temp, numbers[bid][ind])
+        low = min_heap[0][0]
+        if temp - low < upper - lower:
+            lower, upper = low, temp
+            
+    print(lower, upper)
+   
+CODE ENDS!!!
+#{ 
+#  Driver Code Starts
+#Initial Template for Python 3
+
+t=int(input())
+for _ in range(t):
+    line=input().strip().split()
+    n=int(line[0])
+    k=int(line[1])
+    numbers=[]
+    for i in range(k):
+        numbers.append([int(x) for x in input().strip().split()])
+    smallestRange(numbers)
+# } Driver Code Ends
