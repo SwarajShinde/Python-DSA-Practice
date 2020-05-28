@@ -29,9 +29,9 @@ def bin_search(arr,n,m):
         sum1 += arr[i]
     start = 0
     end = sum1
-    result = 99999
+    result = 10**9
 
-    while start<end:
+    while start<=end:
         mid = (start+end)//2
         if curr_min(arr,n,m,mid):
             result = min(result,mid)
