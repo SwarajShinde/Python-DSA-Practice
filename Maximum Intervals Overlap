@@ -1,0 +1,39 @@
+# max guest     time of maximum guest
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    entry=list(map(int,input().split()))
+    exit=list(map(int,input().split()))
+    sum1=0
+    entry.sort()
+    exit.sort()
+    guest_in =1
+    max_guest = 1
+    time=entry[0]
+    i=1
+    j=0
+     
+    while (i<n and j<n):
+        if (entry[i] <= exit[j]):
+            guest_in += 1
+            
+            if guest_in > max_guest:
+                max_guest=guest_in
+                time=entry[i]
+                
+            i += 1
+        
+        else:
+            
+            guest_in -=1
+            j+=1
+            
+    print(max_guest , end=" ")
+    print(time , end=" ")
+    
+    
+    print()
+    
+            
+    
+    
