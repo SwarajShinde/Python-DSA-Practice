@@ -1,0 +1,41 @@
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        
+        '''
+        Normal 2 ways poss. everytime
+        Once you reach max height only 1 route possible then(but this is already counted above)
+     Robot needs to take 2+6 = 8 steps with 2 down and 6 right in any order. That is nothing but a permutation      problem. Denote down as 'D' and right as 'R', following is one of the path :-
+
+    (7*3)   ===   D R R R D R R R
+        
+        (3*3)
+        R D R D
+        _ _ _ _ 
+        
+        (m+n)!//m!*n!  ==> Due to total ways of placing m obj in n places(m+n)!  . M duplicates and N duplicates
+        
+        '''
+        
+        #Actual Code
+        
+        a=1
+        target_x = n-1
+        target_y = m-1
+        num = target_x + target_y
+        def fact(x):
+            if x==1:
+                return x
+            if x<1:
+                return 1
+            else:
+                return x*fact(x-1)
+        num_fact = fact(num)
+        num_den1 = fact(target_x)
+        num_den2 = fact(target_y)
+        
+        
+        out = int(num_fact/(num_den1*num_den2))
+        return out
+
+            
+                
