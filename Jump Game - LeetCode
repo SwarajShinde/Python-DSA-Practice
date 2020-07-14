@@ -1,0 +1,13 @@
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        n=len(nums)
+        last = n-1
+        # i wali term calcautes the individual jump it can make
+        #nums[i] term checks whether we can reach our current i'th posi from start  . ie. INdex
+        for i in range(n-2,-1,-1):
+            if i+nums[i]>=last:
+                last =i
+        #So we should have ideally reached the first position 
+        
+        return last<=0
+        
