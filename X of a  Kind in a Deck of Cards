@@ -1,0 +1,21 @@
+class Solution:
+    def hasGroupsSizeX(self, deck: List[int]) -> bool:
+        
+        '''
+        x = number of pairs possible
+        all cards same integer
+        2 conditions:
+        1. n%x == 0
+        2. (all counter values of deck )%x == 0
+        
+        '''
+        vals = collections.Counter(deck)
+        n=len(deck)
+        for i in range(2,n+1):
+            if n%i == 0:
+                if all(val%i==0 for val in vals.values()):
+                    return True
+        return False
+
+            
+        
